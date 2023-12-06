@@ -16,7 +16,7 @@ async function consumeMessages() {
 
   const q = await channel.assertQueue("NewsQueue")
 
-  await channel.bindQueue(q.queue, rabbitMQ.exchangeName, "Weather")
+  // await channel.bindQueue(q.queue, rabbitMQ.exchangeName, "Weather")
   await channel.bindQueue(q.queue, rabbitMQ.exchangeName, "News")
 
   channel.consume(q.queue, (msg) => {

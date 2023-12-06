@@ -1,5 +1,5 @@
 import { connect } from "amqplib"
-import { rabbitMQ } from "./weatherMSconfig.js"
+import { rabbitMQ } from "./rtWeatherMSconfig.js"
 
 //step 1 : Connect to the rabbitmq server
 //step 2 : Create a new channel
