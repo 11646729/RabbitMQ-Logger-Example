@@ -20,7 +20,9 @@ class Producer {
     }
 
     const exchangeName = rabbitMQ.exchangeName
-    await this.channel.assertExchange(exchangeName, rabbitMQ.exchangeType)
+    await this.channel.assertExchange(exchangeName, rabbitMQ.exchangeType, {
+      durable: false,
+    })
 
     const logDetails = {
       logType: routingKey,
