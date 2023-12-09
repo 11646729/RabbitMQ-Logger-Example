@@ -9,14 +9,13 @@ import { rabbitMQ } from "./rtNewsMSconfig.js"
 //step 6 : Consume messages from the queue
 
 async function consumeMessages() {
-  const connection = await connect("amqp://localhost")
+  const connection = await connect(rabbitMQ.exchangeUrl)
   const channel = await connection.createChannel()
 
   await channel.assertExchange(rabbitMQ.exchangeName, rabbitMQ.exchangeType)
 
   const q = await channel.assertQueue("NewsQueue")
 
-  // await channel.bindQueue(q.queue, rabbitMQ.exchangeName, "Weather")
   await channel.bindQueue(q.queue, rabbitMQ.exchangeName, "News")
 
   channel.consume(q.queue, (msg) => {

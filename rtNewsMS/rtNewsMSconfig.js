@@ -1,5 +1,5 @@
 export const rabbitMQ = {
-  url: "amqp://localhost",
+  exchangeUrl: "amqp://localhost:5672",
   exchangeName: "rtExchange",
   exchangeType: "direct",
 }

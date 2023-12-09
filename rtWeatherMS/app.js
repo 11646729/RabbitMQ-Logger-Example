@@ -9,7 +9,7 @@ import { rabbitMQ } from "./rtWeatherMSconfig.js"
 //step 6 : Consume messages from the queue
 
 async function consumeMessages() {
-  const connection = await connect("amqp://localhost")
+  const connection = await connect(rabbitMQ.exchangeUrl)
   const channel = await connection.createChannel()
 
   await channel.assertExchange(rabbitMQ.exchangeName, rabbitMQ.exchangeType)
