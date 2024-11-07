@@ -8,7 +8,7 @@ import { rabbitMQ } from "./rtNewsMSconfig.js"
 //step 5 : Bind the queue to the exchange
 //step 6 : Consume messages from the queue
 
-async function consumeNewsMessage() {
+export const consumeNewsMessage = async () => {
   const connection = await connect(rabbitMQ.exchangeUrl)
   const channel = await connection.createChannel()
 
@@ -26,5 +26,3 @@ async function consumeNewsMessage() {
 }
 
 consumeNewsMessage()
-
-export default consumeNewsMessage
