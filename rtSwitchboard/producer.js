@@ -22,8 +22,8 @@ class Producer {
     const exchangeName = rabbitMQ.exchangeName
     await this.channel.assertExchange(exchangeName, rabbitMQ.exchangeType)
 
-    const logDetails = {
-      logType: routingKey,
+    const envelopeDetails = {
+      messageType: routingKey,
       message: message,
       dateTime: new Date(),
     }
@@ -31,10 +31,12 @@ class Producer {
     await this.channel.publish(
       exchangeName,
       routingKey,
-      Buffer.from(JSON.stringify(logDetails))
+      Buffer.from(JSON.stringify(envelopeDetails))
     )
 
-    console.log(`The new ${routingKey} log is sent to exchange ${exchangeName}`)
+    console.log(
+      `The new ${routingKey} string is sent to exchange ${exchangeName}`
+    )
   }
 }
 
